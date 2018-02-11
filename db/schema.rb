@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20180211223338) do
 
   create_table "posts", force: :cascade do |t|
     t.string "content"
-    t.string "type"
+    t.string "postType"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "photo_file_name"
