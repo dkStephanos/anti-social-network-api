@@ -41,6 +41,9 @@ GEM
     arel (8.0.0)
     builder (3.2.3)
     byebug (10.0.0)
+    climate_control (0.2.0)
+    cocaine (0.5.8)
+      climate_control (>= 0.0.3, < 1.0)
     concurrent-ruby (1.0.5)
     crass (1.0.3)
     erubi (1.7.0)
@@ -59,12 +62,22 @@ GEM
     mail (2.7.0)
       mini_mime (>= 0.1.1)
     method_source (0.9.0)
+    mime-types (3.1)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2016.0521)
+    mimemagic (0.3.2)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
     nio4r (2.2.0)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
+    paperclip (5.1.0)
+      activemodel (>= 4.2.0)
+      activesupport (>= 4.2.0)
+      cocaine (~> 0.5.5)
+      mime-types
+      mimemagic (~> 0.3.0)
     pg (0.21.0)
     puma (3.11.2)
     rack (2.0.4)
@@ -124,7 +137,9 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
+  i18n (~> 0.9.4)
   listen (>= 3.0.5, < 3.2)
+  paperclip (~> 5.1.0)
   pg (~> 0.18)
   puma (~> 3.7)
   rack-cors
