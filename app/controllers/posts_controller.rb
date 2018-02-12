@@ -1,11 +1,11 @@
 class API::PostsController < ApplicationController
+	before_action: :set_post, only: [:show, :edit, :delete]
 
 	def index
 		render json: Post.all
 	end
 
 	def show
-		set_post
 		render json: @post
 	end
 
