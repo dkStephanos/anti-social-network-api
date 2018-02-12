@@ -1,5 +1,5 @@
 class API::PostsController < ApplicationController
-	before_action: :set_post, only: [:show, :edit, :delete]
+	before_action: :set_post, only: [:show, :edit, :delete, :update]
 
 	def index
 		render json: Post.all
@@ -9,6 +9,30 @@ class API::PostsController < ApplicationController
 		render json: @post
 	end
 
+	def update
+		if @post.update(post_params)
+			render json: @post
+		else
+			render json: { message: @post.errors}, status: 400
+		end
+	end
+
+	def create
+		@post = Post.new(post_params)
+		if @post.save(post_params)
+			render json: @post
+		else
+			render json: { message: @post.errors}, status: 400
+		end
+	end
+
+	def destroy
+		if @post.destroy
+			render status: 204
+		else
+			render json: { message: "Unable to delete post." }, status: 400
+		end
+	end
 
 	private
 
