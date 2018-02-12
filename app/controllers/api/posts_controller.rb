@@ -1,5 +1,5 @@
-class API::PostsController < ApplicationController
-	before_action: :set_post, only: [:show, :edit, :delete, :update]
+class Api::PostsController < ApplicationController
+	before_action :set_post, only: [:show, :edit, :destroy, :update]
 
 	def index
 		render json: Post.all
@@ -41,12 +41,6 @@ class API::PostsController < ApplicationController
 	end
 
 	def post_params
-	    params.require(:post).permit(
-	      [
-	        :content,
-	        :postType,
-	        :photo 
-	      ]
-	    )
+	    params.require(:post).permit(:content, :postType, :photo)
     end
 end
