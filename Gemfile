@@ -26,6 +26,7 @@ gem 'puma', '~> 3.7'
  gem 'rack-cors'
  gem 'paperclip'
  gem 'active_model_serializers'
+ gem 'jwt'
 
 
 group :development, :test do
