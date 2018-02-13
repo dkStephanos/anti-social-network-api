@@ -148,7 +148,7 @@ DEPENDENCIES
   byebug
   i18n (~> 0.9.4)
   listen (>= 3.0.5, < 3.2)
-  paperclip (~> 5.1.0)
+  paperclip
   pg (~> 0.18)
   puma (~> 3.7)
   rack-cors
