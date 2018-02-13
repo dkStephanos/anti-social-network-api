@@ -1,6 +1,5 @@
 class Post < ApplicationRecord
 	validates :content, presence: true
-  	validates :postType, presence: true
 
 	has_attached_file \
     :photo,
