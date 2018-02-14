@@ -1,8 +1,10 @@
 class Api::PostsController < ApplicationController
+	before_action :authenticate_user!
 	before_action :set_post, only: [:show, :edit, :destroy, :update]
 
 	def index
-		render json: Post.all
+		@posts = @current_user.posts
+		render json: @posts
 	end
 
 	def show
@@ -37,7 +39,7 @@ class Api::PostsController < ApplicationController
 	private
 
 	def set_post
-		@post = Post.find_by(id: params[:id]);
+		@post = @current_user.posts.find(params[:id])
 	end
 
 	def post_params
