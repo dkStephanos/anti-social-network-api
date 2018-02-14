@@ -27,6 +27,7 @@ gem 'puma', '~> 3.7'
  gem 'paperclip'
  gem 'active_model_serializers'
  gem 'faraday'
+ gem 'jwt'
 
 
 group :development, :test do
