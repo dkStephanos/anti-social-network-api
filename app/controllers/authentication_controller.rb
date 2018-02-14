@@ -1,4 +1,5 @@
 require 'toki_toki'
+require 'Authenticator'
 
 class AuthenticationController < ApplicationController
   def github
@@ -7,14 +8,13 @@ class AuthenticationController < ApplicationController
 
     login = user_info[:login]
     name = user_info[:name]
-    avatar_url = user_info[:avatar_url]
+    #avatar_url = user_info[:avatar_url]
 
     # Generate token...
     token = TokiToki.encode(login)
     # ... create user if it doesn't exist...
     User.where(login: login).first_or_create!(
-      name: name,
-      avatar_url: avatar_url
+      name: name
     )
     # ... and redirect to client app.
     redirect_to "#{issuer}?token=#{token}"
@@ -25,6 +25,6 @@ class AuthenticationController < ApplicationController
   private
 
   def issuer
-    ENV['FLASHCARDS_CLIENT_URL']
+    ENV['ANTISOCIALNETWORK_CLIENT_URL']
   end
 end
