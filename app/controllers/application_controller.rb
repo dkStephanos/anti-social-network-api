@@ -1,3 +1,5 @@
+require 'toki_toki'
+
 class ApplicationController < ActionController::API
 	def current_user
 		token = params[:token]
