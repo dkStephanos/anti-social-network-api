@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'toki_toki'
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
   setup do

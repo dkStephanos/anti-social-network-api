@@ -1,3 +1,5 @@
+require 'toki_toki'
+
 class AuthenticationController < ApplicationController
   def github
     authenticator = Authenticator.new
