@@ -2,7 +2,7 @@ require 'toki_toki'
 
 class ApplicationController < ActionController::API
 	def current_user
-		token = params[:token]
+		token = request.headers[:Authorization]
 		payload = TokiToki.decode(token)
 		@current_user ||= User.find_by_login(payload[0]['sub'])
 	end

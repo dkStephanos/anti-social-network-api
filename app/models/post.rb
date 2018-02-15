@@ -2,7 +2,6 @@ class Post < ApplicationRecord
 	belongs_to :user
 
   validates :content, presence: true
-  validates :postType, presence: true
 
 	has_attached_file \
     :photo,
