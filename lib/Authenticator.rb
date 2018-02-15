@@ -11,11 +11,9 @@ class Authenticator
       issuer: ENV['ANTISOCIALNETWORK_CLIENT_URL'],
       login: user_info_resp['login'],
       name: user_info_resp['name'],
-      avatar_url: user_info_resp['avatar_url']
+      avatar_url: user_info_resp['avatar_url'],
       bio: user_info_resp['bio']
     }
-
-    byebug
   end
 
   private

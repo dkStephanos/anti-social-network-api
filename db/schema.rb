@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20180215172439) do
   enable_extension "plpgsql"
 
   create_table "posts", force: :cascade do |t|
-    t.string "content"
+    t.text "content"
     t.string "postType"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20180215172439) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "avatar_url"
+    t.string "avatar_url"
     t.text "bio"
   end
 
