@@ -7,13 +7,15 @@ class Authenticator
     access_token_resp = fetch_github_access_token(code)
     access_token = access_token_resp['access_token']
     user_info_resp = fetch_github_user_info(access_token)
-
     {
-      issuer: ENV['FLASHCARDS_CLIENT_URL'],
+      issuer: ENV['ANTISOCIALNETWORK_CLIENT_URL'],
       login: user_info_resp['login'],
       name: user_info_resp['name'],
-      # avatar_url: user_info_resp['avatar_url']
+      avatar_url: user_info_resp['avatar_url']
+      bio: user_info_resp['bio']
     }
+
+    byebug
   end
 
   private
