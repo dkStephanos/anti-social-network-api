@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :set_user, only: [:show, :update, :destroy, :current_user]
 
   # GET /users
   def index
@@ -38,12 +39,8 @@ class UsersController < ApplicationController
     @user.destroy
   end
 
-  def current_user
-    if logged_in?
-      render json: current_user
-    else
-      render json: 404
-    end
+  def currentUser
+    render json: @current_user
   end
 
   private

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 	get '/auth/github', to: 'authentication#github', format: false
-	get '/currentUser', to: 'users#current_user'
+	get '/api/currentUser', to: 'users#currentUser'
 
 	resources :users
 	namespace :api do
