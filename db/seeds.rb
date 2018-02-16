@@ -4,5 +4,11 @@
 	avatar = Faker::Avatar.image
 	bio = Faker::HitchhikersGuideToTheGalaxy.marvin_quote
 
-	User.create(login: login, name: userName, avatar_url: avatar, bio: bio)
+	user = User.create(login: login, name: userName, avatar_url: avatar, bio: bio)
+
+	5.times do
+		content = Faker::Lorem.sentence
+
+		Post.create(content: content, postType: 'text', user_id: user.id)
+	end
 end
