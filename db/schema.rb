@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180215172439) do
+ActiveRecord::Schema.define(version: 20180216175335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "connections", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "connected_user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["connected_user_id"], name: "index_connections_on_connected_user_id"
+    t.index ["user_id", "connected_user_id"], name: "index_connections_on_user_id_and_connected_user_id", unique: true
+    t.index ["user_id"], name: "index_connections_on_user_id"
+  end
 
   create_table "posts", force: :cascade do |t|
     t.text "content"
@@ -36,4 +46,6 @@ ActiveRecord::Schema.define(version: 20180215172439) do
     t.text "bio"
   end
 
+  add_foreign_key "connections", "users"
+  add_foreign_key "connections", "users", column: "connected_user_id"
 end

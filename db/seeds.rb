@@ -12,3 +12,10 @@
 		Post.create(content: content, postType: 'text', user_id: user.id)
 	end
 end
+
+
+User.all.each do |user| 
+	if user.id != User.last.id
+		user.connected_users << User.find(user.id + 1)
+	end
+end
