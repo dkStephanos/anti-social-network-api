@@ -58,6 +58,8 @@ GEM
       dotenv (= 2.2.1)
       railties (>= 3.2, < 5.2)
     erubi (1.7.0)
+    faker (1.8.7)
+      i18n (>= 0.7)
     faraday (0.14.0)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.21)
@@ -155,6 +157,7 @@ DEPENDENCIES
   active_model_serializers
   byebug
   dotenv-rails
+  faker
   faraday
   i18n (~> 0.9.4)
   jwt
