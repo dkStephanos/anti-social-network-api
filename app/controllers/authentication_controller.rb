@@ -20,14 +20,18 @@ class AuthenticationController < ApplicationController
       bio: bio
     )
     # ... and redirect to client app.
-    redirect_to "#{issuer}?token=#{token}"
+    redirect_to "#{auth}?token=#{token}"
   rescue StandardError => error
-    redirect_to "#{issuer}?error=#{error.message}"
+    redirect_to "#{auth}?error=#{error.message}"
   end
 
   private
 
   def issuer
     ENV['ANTISOCIALNETWORK_CLIENT_URL']
+  end
+
+  def auth
+    ENV['ANTISOCIALNETWORK_AUTH_CALLBACK_URL']
   end
 end

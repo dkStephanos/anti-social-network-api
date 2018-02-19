@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [:show, :update, :destroy, :current_user, :userConnections]
+  before_action :set_user, only: [:show, :update, :destroy, :current_user]
 
   # GET /users
   def index
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
   end
 
   def userConnections
-    render json: @current_user.connections
+    render json: @current_user.connected_users
   end
 
   private
