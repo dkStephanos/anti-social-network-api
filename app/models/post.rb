@@ -9,7 +9,7 @@ class Post < ApplicationRecord
     convert_options: {
       all: '-interlace Plane'
     },
-    default_url: '/images/default_:style_photo.png'
+    default_url: 'assets/images/default.jpeg'
 
     validates_attachment_file_name :photo, matches: [/png\Z/, /jpe?g\Z/, /gif\Z/]
 end

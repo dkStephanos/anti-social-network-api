@@ -8,8 +8,9 @@
 
 	5.times do
 		content = Faker::Lorem.sentence
+		title = Faker::Simpsons.location
 
-		Post.create(content: content, postType: 'text', user_id: user.id)
+		Post.create(title: title, content: content, postType: 'photo', user_id: user.id)
 	end
 end
 
