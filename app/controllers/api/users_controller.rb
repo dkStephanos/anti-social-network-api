@@ -47,6 +47,24 @@ class Api::UsersController < ApplicationController
     render json: @current_user.connected_users
   end
 
+  def userConnectionsIds
+  	# Builds a list of ids the user is connected with to assist with forming new connections
+  	connectionIds = @current_user.connected_users.map do |user|
+  		user.id
+  	end
+  	# Include own id, because can't be connected to yourself
+  	connectionIds << @current_user.id
+
+    render json: connectionIds
+  end
+
+  def addConnection
+  	userToConnect = User.find_by(id: params[:connection])
+  	@current_user.connected_users << userToConnect
+
+  	render status: 200
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
