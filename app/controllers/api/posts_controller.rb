@@ -9,6 +9,11 @@ class Api::PostsController < ApplicationController
 		render json: @posts
 	end
 
+	def connections_posts
+		@posts = current_users_connections_posts
+		render json: @posts
+	end
+
 	def show
 		render json: @post
 	end
@@ -47,5 +52,15 @@ class Api::PostsController < ApplicationController
 
 	def post_params
 	    params.require(:post).permit(:content, :postType, :photo)
+    end
+
+    def current_users_connections_posts
+    	@posts = @current_user.posts
+
+    	@current_user.connected_users.each do |user|
+    		@posts << user.posts
+    	end
+
+    	@posts = @posts.sort_by { |obj| - obj.created_at.to_i }
     end
 end
