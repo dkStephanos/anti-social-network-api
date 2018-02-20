@@ -24,8 +24,10 @@ gem 'puma', '~> 3.7'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
  gem 'rack-cors'
- gem 'paperclip', '~> 5.1.0'
+ gem 'paperclip', '~> 5.2.0'
  gem 'active_model_serializers'
+ gem 'faraday'
+ gem 'jwt'
 
 
 group :development, :test do
@@ -35,7 +37,8 @@ end
 
 group :development do
   gem 'rack-cors', :require => 'rack/cors'
-
+  gem 'dotenv-rails'
+  gem 'faker'
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'

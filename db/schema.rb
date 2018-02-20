@@ -10,13 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180211223338) do
+ActiveRecord::Schema.define(version: 20180216175335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "connections", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "connected_user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["connected_user_id"], name: "index_connections_on_connected_user_id"
+    t.index ["user_id", "connected_user_id"], name: "index_connections_on_user_id_and_connected_user_id", unique: true
+    t.index ["user_id"], name: "index_connections_on_user_id"
+  end
+
   create_table "posts", force: :cascade do |t|
-    t.string "content"
+    t.text "content"
     t.string "postType"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -24,6 +34,18 @@ ActiveRecord::Schema.define(version: 20180211223338) do
     t.string "photo_content_type"
     t.integer "photo_file_size"
     t.datetime "photo_updated_at"
+    t.integer "user_id"
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "login"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "avatar_url"
+    t.text "bio"
+  end
+
+  add_foreign_key "connections", "users"
+  add_foreign_key "connections", "users", column: "connected_user_id"
 end
