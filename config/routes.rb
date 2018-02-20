@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 		resources :posts, except: [:new, :edit]
 		resources :users, except: [:new, :edit]
 		get '/currentUser', to: 'users#currentUser'
+		get '/currentUser_posts', to: 'users#currentUser_posts'
 		get '/userConnections', to: 'users#userConnections'
 		get '/userConnectionsIds', to: 'users#userConnectionsIds'
 		post '/connections', to: 'users#addConnection'

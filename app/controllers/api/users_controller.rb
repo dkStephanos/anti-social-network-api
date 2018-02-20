@@ -65,6 +65,11 @@ class Api::UsersController < ApplicationController
   	render status: 200
   end
 
+  def currentUser_posts
+  	@posts = @current_user.posts
+  	render json: @posts
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
