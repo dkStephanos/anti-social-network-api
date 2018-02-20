@@ -55,12 +55,14 @@ class Api::PostsController < ApplicationController
     end
 
     def current_users_connections_posts
-    	@posts = @current_user.posts
-
+    	@posts = @current_user.posts.to_a
+    	
     	@current_user.connected_users.each do |user|
-    		@posts << user.posts
+    		user.posts.each do |post|
+    			@posts.push(post) 
+    		end
     	end
-
+    	
     	@posts = @posts.sort_by { |obj| - obj.created_at.to_i }
     end
 end
