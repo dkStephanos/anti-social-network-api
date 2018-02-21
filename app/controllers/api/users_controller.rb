@@ -70,6 +70,12 @@ class Api::UsersController < ApplicationController
   	render json: @posts
   end
 
+  def user_posts
+  	user = User.find_by(id: params[:user_id])
+
+  	render json: user.posts
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
