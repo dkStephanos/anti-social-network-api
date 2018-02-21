@@ -66,7 +66,7 @@ class Api::UsersController < ApplicationController
   end
 
   def currentUser_posts
-  	@posts = @current_user.posts
+  	@posts = @current_user.posts.order('created_at DESC')
   	render json: @posts
   end
 

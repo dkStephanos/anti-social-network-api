@@ -6,7 +6,7 @@
 
 	user = User.create(login: login, name: userName, avatar_url: avatar, bio: bio)
 
-	5.times do
+	10.times do
 		content = Faker::Lorem.sentence
 		title = Faker::Simpsons.location
 
