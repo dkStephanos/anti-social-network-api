@@ -28,6 +28,8 @@ gem 'puma', '~> 3.7'
  gem 'active_model_serializers'
  gem 'faraday'
  gem 'jwt'
+ gem 'carrierwave'
+ gem 'carrierwave-base64'
 
 
 group :development, :test do

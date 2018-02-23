@@ -28,6 +28,7 @@ class Api::PostsController < ApplicationController
 
 	def create
 		@post = Post.new(post_params)
+		
 		@post.user = @current_user
 		if @post.save(post_params)
 			render json: @post
@@ -51,7 +52,7 @@ class Api::PostsController < ApplicationController
 	end
 
 	def post_params
-	    params.require(:post).permit(:content, :postType, :photo)
+	    params.require(:post).permit(:content, :postType, :picture, :title)
     end
 
     def current_users_connections_posts
