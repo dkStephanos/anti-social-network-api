@@ -1,6 +1,6 @@
 class Api::UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [:show, :update, :destroy, :current_user]
+  before_action :set_user, only: [:show, :update, :destroy, :current_user, :addConnection]
 
   # GET /users
   def index
@@ -60,9 +60,13 @@ class Api::UsersController < ApplicationController
 
   def addConnection
   	userToConnect = User.find_by(id: params[:connection])
-  	@current_user.connected_users << userToConnect
+  	if(userToConnect != @current_user) {
+      @current_user.connected_users << userToConnect
 
-  	render status: 200
+      render status: 200
+    } else {
+      render status: 400
+    }
   end
 
   def currentUser_posts
