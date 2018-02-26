@@ -60,13 +60,13 @@ class Api::UsersController < ApplicationController
 
   def addConnection
   	userToConnect = User.find_by(id: params[:connection])
-  	if(userToConnect != @current_user) {
+  	if(userToConnect != @current_user) 
       @current_user.connected_users << userToConnect
 
       render status: 200
-    } else {
+    else 
       render status: 400
-    }
+    end
   end
 
   def currentUser_posts
