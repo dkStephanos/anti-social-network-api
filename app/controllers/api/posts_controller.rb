@@ -2,7 +2,7 @@ require 'toki_toki'
 
 class Api::PostsController < ApplicationController
 	before_action :authenticate_user!
-	before_action :set_post, only: [:show, :edit, :destroy, :update]
+	before_action :set_post, only: [:edit, :destroy, :update]
 
 	def index
 		@posts = Post.order('created_at DESC')
@@ -15,6 +15,7 @@ class Api::PostsController < ApplicationController
 	end
 
 	def show
+		@post = Post.find_by(id: params[:id])
 		render json: @post
 	end
 
