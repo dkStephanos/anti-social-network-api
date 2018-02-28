@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 	get '/auth/github', to: 'authentication#github', format: false
 
 	namespace :api do
-		resources :posts, except: [:new, :edit]
+		resources :posts, except: [:new, :edit] do
+			resources :comments
+		end
 		resources :users, except: [:new, :edit]
 		get '/connections_posts', to: 'posts#connections_posts'
 		get '/currentUser', to: 'users#currentUser'
