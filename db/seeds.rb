@@ -1,3 +1,7 @@
+def seed_image(file_name)
+  File.open(File.join(Rails.root, "/app/assets/images/seed/#{file_name}.jpg"))
+end
+
 10.times do
 	login = Faker::Twitter.screen_name
 	userName = Faker::Name.name
@@ -9,8 +13,10 @@
 	10.times do
 		content = Faker::Lorem.sentence
 		title = Faker::Simpsons.location
+		pic_name = 1 + Random.rand(22)
+		picture = seed_image(pic_name)
 
-		Post.create(title: title, content: content, postType: 'photo', user_id: user.id)
+		Post.create(title: title, content: content, postType: 'photo', picture: picture, user_id: user.id)
 	end
 end
 

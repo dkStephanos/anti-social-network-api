@@ -77,7 +77,7 @@ class Api::UsersController < ApplicationController
   def user_posts
   	user = User.find_by(id: params[:user_id])
 
-  	render json: user.posts
+  	render json: user.posts.order('created_at DESC')
   end
 
   private
